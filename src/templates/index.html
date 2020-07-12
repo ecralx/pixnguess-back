@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pix n Guess</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo.png') }}" />
+        <link href="https://fonts.googleapis.com/css2?family=Play&family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}" media="screen"/>
+    </head>
+    <body>
+        <div id="game">
+            <div id="pt1">
+                <div id="pt1-text">
+                    <img id="pt1-logo" src="{{ url_for('static', filename='img/logo.png') }}">
+                    <p>Welcome to Pix n Guess</p>
+                    <p>Try to find who's behind the pixelated image!</p>
+                    <p>You can either submit his or her fullname or only the lastname</p>
+                </div>
+                <div id="pt1-create-game">
+                    <button id="pt1-button" onclick="createGame()">Start !</button>
+                </div>
+            </div>
+            <div id="pt2" style="display: none">
+                <div id="pt2-infos">
+                    <div id="pt2-scoresheet" class="base-timer">
+                        <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                          <g class="base-timer__circle">
+                            <circle id="pt2-score-circle" class="base-timer__path-elapsed" cx="50" cy="50" r="45" />
+                          </g>
+                        </svg>
+                        <span id="pt2-score" class="base-timer__label"></span>
+                    </div>
+                    <img id="pt2-img" />
+
+                    <div id="pt2-clock" class="base-timer">
+                        <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                          <g class="base-timer__circle">
+                            <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45" />
+                            <path
+                                id="base-timer-path-remaining"
+                                stroke-dasharray="283"
+                                class="base-timer__path-remaining"
+                                d="
+                                M 50, 50
+                                m -45, 0
+                                a 45,45 0 1,0 90,0
+                                a 45,45 0 1,0 -90,0
+                                "
+                            ></path>
+                          </g>
+                        </svg>
+                        <span id="pt2-time" class="base-timer__label">
+                        </span>
+                    </div>
+                </div>
+                <table id="pt2-hint-table">
+                    <tr id="pt2-hint"></tr>
+                </table>
+                <div id="pt2-solving">
+                    <input
+                        id="pt2-input"
+                        type="text"
+                        name="answer"
+                        value=""
+                        autocomplete="off"
+                        onkeypress="onKeyPress(event)"
+                        onsubmit="solve()"
+                    />
+                    <button id="pt2-button" onclick="solve()">Answer</button>
+                </div>
+            </div>
+            <div id="pt3" style="display: none">
+                <p>You did great !</p>
+                <p id="pt3-score"></p>
+                <button id="pt3-replay" onclick="replay()">Play again</button>
+                <div id="pt3-answers">
+                    <ul id="pt3-ul"></ul>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}" charset="utf-8"></script>
+    </body>
+</html>

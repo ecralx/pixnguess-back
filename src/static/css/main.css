@@ -1,0 +1,210 @@
+body {
+    /* font-family: 'Roboto', sans-serif;*/
+    font-family: 'Play', sans-serif;
+    margin: 0;
+    width: 100%;
+}
+#game {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+}
+#pt3-replay {
+    border: none;
+    padding: 10px 0;
+    width: 100%;
+    box-sizing:border-box;
+    background-color: #118AB2;
+    color: #ffffff;
+}
+#pt1-text {
+    padding: 10px;
+}
+#pt1-logo {
+    padding: 3px 5px;
+    border-bottom: 1px solid #000;
+    box-shadow: 0 4px 2px -2px gray;
+    width: 320px;
+    image-rendering: -moz-crisp-edges;         /* Firefox */
+    image-rendering:   -o-crisp-edges;         /* Opera */
+    image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */
+}
+#pt1-button {
+    border: none;
+    padding: 10px 0;
+    width: 100%;
+    box-sizing:border-box;
+    background-color: #118AB2;
+    color: #ffffff;
+}
+#pt2-infos {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    margin: 10px 0;
+}
+#pt2-scoresheet {
+    margin-right: 5px;
+}
+#pt2-clock {   
+    margin-left: 5px;
+}
+#pt2-img {
+    max-width: 100%;
+    width: 320px;
+    height:auto;
+    image-rendering: -moz-crisp-edges;         /* Firefox */
+    image-rendering:   -o-crisp-edges;         /* Opera */
+    image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */
+}
+#pt2-hint-table {
+    margin: 0 auto;
+}
+#pt2-hint {
+    width: 100%;
+    text-align: center;
+}
+#pt2-hint > td {
+    width: 20px;
+}
+#pt2-solving {
+    width: 100%;
+}
+#pt2-input {
+    height: 26px;
+    padding: 2px 0px;
+    width: 100%;
+    box-sizing:border-box;
+}
+#pt2-input:focus {
+    color: #000 !important;
+    outline: none !important;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+}
+#pt2-button {
+    border: none;
+    margin: 5px 0;
+    padding: 10px 0;
+    width: 100%;
+    max-height: 100%;
+    box-sizing:border-box;
+    background-color: #118AB2;
+    color: #ffffff;
+}
+#pt3-ul {
+    list-style: none;
+    padding: 0;
+}
+.correct {
+    color: #06D6A0;
+    stroke: #06D6A0 !important;
+}
+.correct:focus {
+    border-color: #06D6A0 !important; 
+    box-shadow: 0 0 2px #06D6A0 !important;
+}
+.incorrect {
+    color: #EF476F;
+    stroke: #EF476F !important;
+}
+.incorrect:focus {
+    border-color: #EF476F !important;
+    box-shadow: 0 0 2px #EF476F !important;
+}
+
+/* Sets the containers height and width */
+.base-timer {
+    position: relative;
+    height: 160px;
+    width: 160px;
+    margin: auto 0px;
+}
+
+/* Removes SVG styling that would hide the time label */
+.base-timer__circle {
+    fill: none;
+    stroke: none;
+}
+
+/* The SVG path that displays the timer's progress */
+.base-timer__path-elapsed {
+    stroke-width: 7px;
+    stroke: grey;
+}
+
+.base-timer__label {
+    position: absolute;
+    
+    /* Size should match the parent container */
+    height: 160px;
+    width: 160px;
+    
+    /* Keep the label aligned to the top */
+    top: 0;
+    
+    /* Create a flexible box that centers content vertically and horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Sort of an arbitrary number; adjust to your liking */
+    font-size: 32px;
+    color: #000 !important;
+}
+
+.base-timer__path-remaining {
+    /* Just as thick as the original ring */
+    stroke-width: 7px;
+
+    /* Rounds the line endings to create a seamless circle */
+    stroke-linecap: round;
+
+    /* Makes sure the animation starts at the top of the circle */
+    transform: rotate(90deg);
+    transform-origin: center;
+
+    /* One second aligns with the speed of the countdown timer */
+    transition: 1s linear all;
+
+    /* Allows the ring to change color when the color value updates */
+    stroke: currentColor;
+}
+
+.base-timer__svg {
+/* Flips the svg and makes the animation to move left-to-right */
+transform: scaleX(-1);
+}
+
+.base-timer__path-remaining.green {
+    color: rgb(65, 184, 131);
+}
+
+.base-timer__path-remaining.orange {
+    color: orange;
+}
+
+.base-timer__path-remaining.red {
+    color: red;
+}
+
+@media screen and (max-width: 640px) {
+    #pt2-img {
+        width: 30%;
+        max-width: 320px;
+    }
+    .base-timer, .base-timer__label {
+        width: 80px;
+        height: 80px;
+    }
+    #pt2-solving {
+        position: absolute;
+        max-width: 640px;
+    }
+}
